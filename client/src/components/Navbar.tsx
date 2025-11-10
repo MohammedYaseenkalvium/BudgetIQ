@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 interface NavbarProps {
   isDarkMode: boolean;
@@ -6,6 +7,20 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ isDarkMode, setIsDarkMode }) => {
+  const linkBase =
+    "relative pb-1 hover:text-green-400 hover:drop-shadow-[0_0_6px_rgba(34,197,94,0.8)] transition duration-200";
+
+  const activeLink =
+    "text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.8)] " +
+    "after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] " +
+    "after:bg-green-400 after:rounded-full after:shadow-[0_0_6px_rgba(34,197,94,0.8)] " +
+    "after:transform after:scale-x-100 after:origin-left after:transition-transform after:duration-300";
+
+  const inactiveLink =
+    "after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] " +
+    "after:bg-green-400 after:rounded-full after:transform after:scale-x-0 " +
+    "after:origin-left after:transition-transform after:duration-300";
+
   return (
     <nav
       className={`${
@@ -14,25 +29,33 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, setIsDarkMode }) => {
     >
       <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
         <h1 className="text-xl font-bold text-green-500">BudgetIQ</h1>
+
         <div className="flex items-center gap-6">
-          <a
-            href="#"
-            className="hover:text-green-400 hover:drop-shadow-[0_0_6px_rgba(34,197,94,0.8)] transition"
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `${linkBase} ${isActive ? activeLink : inactiveLink}`
+            }
           >
             Home
-          </a>
-          <a
-            href="#"
-            className="hover:text-green-400 hover:drop-shadow-[0_0_6px_rgba(34,197,94,0.8)] transition"
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `${linkBase} ${isActive ? activeLink : inactiveLink}`
+            }
           >
             About
-          </a>
-          <a
-            href="#"
-            className="hover:text-green-400 hover:drop-shadow-[0_0_6px_rgba(34,197,94,0.8)] transition"
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              `${linkBase} ${isActive ? activeLink : inactiveLink}`
+            }
           >
             Contact
-          </a>
+          </NavLink>
+
           <button
             onClick={() => setIsDarkMode(!isDarkMode)}
             className="px-3 py-1 rounded-md border border-green-500 text-green-500 hover:bg-green-500 hover:text-white transition duration-300"
