@@ -3,6 +3,10 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import { SignIn, SignUp, SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
 import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import SignInPage from "./pages/SignInPage";
+
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -14,8 +18,10 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-in" element={<SignInPage />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/about" element={<About/>}/>
+          <Route path="/contact" element={<Contact/>}/>
           <Route
             path="/protected"
             element={

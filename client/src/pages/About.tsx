@@ -2,7 +2,7 @@ import React from "react";
 
 const About: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-full text-center px-6 space-y-6">
+    <div className="flex flex-col items-center justify-center min-h-screen text-center px-6 space-y-6">
       <h1 className="text-4xl font-bold text-green-500">About BudgetIQ</h1>
       <p className="max-w-2xl text-lg opacity-80 leading-relaxed">
         BudgetIQ is a smart expense-tracking platform designed to help you
