@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
 
 interface NavbarProps {
   isDarkMode: boolean;
@@ -55,6 +56,31 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, setIsDarkMode }) => {
           >
             Contact
           </NavLink>
+
+          {/* Show only when user is signed out */}
+          <SignedOut>
+            <NavLink
+              to="/sign-in"
+              className={({ isActive }) =>
+                `${linkBase} ${isActive ? activeLink : inactiveLink}`
+              }
+            >
+              Sign In
+            </NavLink>
+          </SignedOut>
+
+          {/* Show when user is signed in */}
+          <SignedIn>
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) =>
+                `${linkBase} ${isActive ? activeLink : inactiveLink}`
+              }
+            >
+              Dashboard
+            </NavLink>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
 
           <button
             onClick={() => setIsDarkMode(!isDarkMode)}
