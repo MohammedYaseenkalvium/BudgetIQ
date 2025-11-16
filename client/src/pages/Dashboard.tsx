@@ -1,17 +1,26 @@
-import { useUser } from "@clerk/clerk-react";
+import DashboardLayout from "../components/Dashboardlayout";
 
 export default function Dashboard() {
-  const { user } = useUser();
-
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen text-center space-y-4">
-      <h1 className="text-4xl font-bold text-green-500">
-        Welcome to Your Dashboard
-      </h1>
-      <p className="text-lg opacity-80">
-        Hello, {user?.firstName || "User"} 👋
-      </p>
-      <p className="opacity-70">Track your expenses and grow your savings.</p>
-    </div>
+    <DashboardLayout>
+      <h1 className="text-3xl font-bold mb-6">Overview</h1>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="p-6 bg-white shadow rounded-lg">
+          <h2 className="text-gray-700 font-semibold">Total Income</h2>
+          <p className="text-2xl font-bold text-green-500">₹0</p>
+        </div>
+
+        <div className="p-6 bg-white shadow rounded-lg">
+          <h2 className="text-gray-700 font-semibold">Total Expense</h2>
+          <p className="text-2xl font-bold text-red-500">₹0</p>
+        </div>
+
+        <div className="p-6 bg-white shadow rounded-lg">
+          <h2 className="text-gray-700 font-semibold">Balance</h2>
+          <p className="text-2xl font-bold text-blue-500">₹0</p>
+        </div>
+      </div>
+    </DashboardLayout>
   );
 }
